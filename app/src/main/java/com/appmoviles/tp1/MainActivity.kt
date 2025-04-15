@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.appmoviles.tp1.models.User
 import com.appmoviles.tp1.ui.theme.Tp1Theme
+import com.appmoviles.tp1.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Tp1Theme {
-                Register()
+                LoginScreen()
             }
         }
     }
