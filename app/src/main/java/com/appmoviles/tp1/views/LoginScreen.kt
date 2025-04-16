@@ -1,4 +1,4 @@
-package com.appmoviles.tp1
+package com.appmoviles.tp1.views
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -7,9 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val errorMessage = remember { mutableStateOf("") }
@@ -46,7 +48,7 @@ fun LoginScreen() {
         Button(
             onClick = {
                 if (username.value == "Juan Torres" && password.value == "1234utn") {
-                    errorMessage.value = "¡Bienvenido Juan Torres!"
+                    navController.navigate("Bienvenida/${username.value}")
                 } else {
                     errorMessage.value = "Usuario o contraseña incorrectos"
                 }
@@ -67,5 +69,5 @@ fun LoginScreen() {
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen(navController = rememberNavController())
 }
