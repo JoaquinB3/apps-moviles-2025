@@ -35,14 +35,15 @@ fun BienvenidaPage(nombre: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .padding(start = 24.dp, top = 64.dp, end = 24.dp) // Añadí padding top de 64.dp
+        ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "¡Bienvenido/a, $nombre!",
             style = MaterialTheme.typography.headlineMedium,
             fontSize = 28.sp,
-            color = MaterialTheme.colorScheme.primary,
+            color = Color.White,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 32.dp)
         )
@@ -51,31 +52,38 @@ fun BienvenidaPage(nombre: String) {
             Text(
                 "¿Qué plataforma utilizas?",
                 style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
                 fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 16.dp) // Aumenté el espaciado
             )
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 24.dp), // Separar los botones de la imagen
+                horizontalArrangement = Arrangement.Center // Centrado de botones
             ) {
                 Button(
                     onClick = { selectedPlataform.value = "Android" },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (selectedPlataform.value == "Android") MaterialTheme.colorScheme.primary else Color.LightGray,
-                        contentColor = Color.White
+                        contentColor = Color.Black
                     ),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.weight(1f) // Aseguramos que los botones tengan el mismo tamaño
                 ) {
                     Text("Android")
                 }
+
+                Spacer(modifier = Modifier.width(16.dp)) // Separar los botones
 
                 Button(
                     onClick = { selectedPlataform.value = "iOS" },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (selectedPlataform.value == "iOS") MaterialTheme.colorScheme.primary else Color.LightGray,
-                        contentColor = Color.White
+                        contentColor = Color.Black
                     ),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.weight(1f) // Aseguramos que los botones tengan el mismo tamaño
                 ) {
                     Text("iOS")
                 }
@@ -87,8 +95,9 @@ fun BienvenidaPage(nombre: String) {
                     painter = painterResource(id = logo),
                     contentDescription = "$plataform Logo",
                     modifier = Modifier
-                        .padding(top = 24.dp)
-                        .size(80.dp)
+                        .padding(top = 16.dp)
+                        .size(100.dp) // Ajustar el tamaño de la imagen
+                        .align(Alignment.CenterHorizontally) // Centrado de imagen
                 )
             }
 
@@ -97,12 +106,14 @@ fun BienvenidaPage(nombre: String) {
             Text(
                 "Tus preferencias:",
                 style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
+
             val preferences = listOf("Programacion", "Redes", "Seguridad", "Hardware", "Otra")
 
-            Column {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 preferences.forEach { preference ->
                     val checked = selectedPreferences.contains(preference)
                     Row(
@@ -126,7 +137,10 @@ fun BienvenidaPage(nombre: String) {
                                 checkedColor = MaterialTheme.colorScheme.primary
                             )
                         )
-                        Text(preference)
+                        Text(
+                            preference,
+                            color = Color.White // Aquí definimos que el texto será blanco
+                        )
                     }
                 }
 
@@ -134,9 +148,7 @@ fun BienvenidaPage(nombre: String) {
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = otherPreferences,
-                        onValueChange = { newValue ->
-                            otherPreferences = newValue
-                        },
+                        onValueChange = { newValue -> otherPreferences = newValue },
                         label = { Text("Especificar otra preferencia") },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -144,8 +156,9 @@ fun BienvenidaPage(nombre: String) {
                         shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            cursorColor = MaterialTheme.colorScheme.primary
-                        )
+                            cursorColor = MaterialTheme.colorScheme.primary,
+                        ),
+                        textStyle = TextStyle(color = Color.White)
                     )
                 }
 
@@ -175,18 +188,23 @@ fun BienvenidaPage(nombre: String) {
                     Text(
                         "Preferencias guardadas:",
                         style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
-                    Text(finalPreferences.joinToString(", "))
+                    Text(finalPreferences.joinToString(", "), color = Color.White) // También el texto aquí en blanco
                 }
             }
         }
     }
 }
 
+
+
 @Preview(showBackground = true)
 @Composable
 fun BienvenidaPageStyledPreview() {
     BienvenidaPage(nombre = "Juan Torres")
 }
+
+
