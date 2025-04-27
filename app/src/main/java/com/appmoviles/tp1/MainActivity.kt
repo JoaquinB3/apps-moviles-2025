@@ -1,5 +1,7 @@
 package com.appmoviles.tp1
 
+
+import LoginScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,7 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.appmoviles.tp1.ui.theme.Tp1Theme
 import com.appmoviles.tp1.views.BienvenidaPage
-import com.appmoviles.tp1.views.LoginScreen
+
 import com.appmoviles.tp1.views.Register
 
 class MainActivity : ComponentActivity() {
@@ -23,6 +25,9 @@ class MainActivity : ComponentActivity() {
                     composable("Bienvenida/{nombre}") { backStackEntry ->
                         val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
                         BienvenidaPage(nombre)
+                    }
+                    composable("register") {
+                        Register()
                     }
                 }
             }
