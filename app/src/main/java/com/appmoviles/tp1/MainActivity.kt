@@ -1,6 +1,5 @@
 package com.appmoviles.tp1
 
-
 import LoginScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +10,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.appmoviles.tp1.ui.theme.Tp1Theme
 import com.appmoviles.tp1.views.BienvenidaPage
-
 import com.appmoviles.tp1.views.Register
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +25,7 @@ class MainActivity : ComponentActivity() {
                         BienvenidaPage(nombre)
                     }
                     composable("register") {
-                        Register()
+                        Register(navController)
                     }
                 }
             }
