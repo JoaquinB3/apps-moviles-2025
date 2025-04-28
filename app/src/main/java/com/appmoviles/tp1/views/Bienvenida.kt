@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appmoviles.tp1.R
 
+
+
 @Composable
 fun BienvenidaPage(nombre: String) {
 
@@ -70,31 +72,31 @@ fun BienvenidaPage(nombre: String) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 24.dp), // Separar los botones de la imagen
-                    horizontalArrangement = Arrangement.Center // Centrado de botones
+                        .padding(bottom = 24.dp),
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     Button(
                         onClick = { selectedPlataform.value = "Android" },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (selectedPlataform.value == "Android") MaterialTheme.colorScheme.primary else Color.LightGray,
+                            containerColor = if (selectedPlataform.value == "Android") Color(0xFF6C63FF) else Color.LightGray,
                             contentColor = Color.Black
                         ),
                         shape = RoundedCornerShape(8.dp),
-                        modifier = Modifier.weight(1f) // Aseguramos que los botones tengan el mismo tamaño
+                        modifier = Modifier.weight(1f)
                     ) {
                         Text("Android")
                     }
 
-                    Spacer(modifier = Modifier.width(16.dp)) // Separar los botones
+                    Spacer(modifier = Modifier.width(16.dp))
 
                     Button(
                         onClick = { selectedPlataform.value = "iOS" },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (selectedPlataform.value == "iOS") MaterialTheme.colorScheme.primary else Color.LightGray,
+                            containerColor = if (selectedPlataform.value == "iOS") Color(0xFF6C63FF) else Color.LightGray,
                             contentColor = Color.Black
                         ),
                         shape = RoundedCornerShape(8.dp),
-                        modifier = Modifier.weight(1f) // Aseguramos que los botones tengan el mismo tamaño
+                        modifier = Modifier.weight(1f)
                     ) {
                         Text("iOS")
                     }
@@ -107,8 +109,8 @@ fun BienvenidaPage(nombre: String) {
                         contentDescription = "$plataform Logo",
                         modifier = Modifier
                             .padding(top = 16.dp)
-                            .size(100.dp) // Ajustar el tamaño de la imagen
-                            .align(Alignment.CenterHorizontally) // Centrado de imagen
+                            .size(100.dp)
+                            .align(Alignment.CenterHorizontally)
                     )
                 }
 
@@ -145,12 +147,12 @@ fun BienvenidaPage(nombre: String) {
                                     }
                                 },
                                 colors = CheckboxDefaults.colors(
-                                    checkedColor = MaterialTheme.colorScheme.primary
+                                    checkedColor = Color(0xFF6C63FF)
                                 )
                             )
                             Text(
                                 preference,
-                                color = Color.White // Aquí definimos que el texto será blanco
+                                color = Color.White
                             )
                         }
                     }
@@ -186,12 +188,11 @@ fun BienvenidaPage(nombre: String) {
                             .fillMaxWidth()
                             .padding(top = 32.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary,
-                            contentColor = Color.White
+                            containerColor = Color(0xFF6C63FF),
                         ),
                         shape = RoundedCornerShape(8.dp)
                     ) {
-                        Text("Guardar Preferencias", style = TextStyle(fontWeight = FontWeight.Bold))
+                        Text("Guardar Preferencias", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold))
                     }
 
                     Spacer(modifier = Modifier.height(24.dp))
@@ -209,7 +210,7 @@ fun BienvenidaPage(nombre: String) {
             }
         }
     }
-    }
+}
 
 
 
